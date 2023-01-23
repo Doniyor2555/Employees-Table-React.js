@@ -118,20 +118,20 @@ class App extends Component {
   const {data, term, filter} = this.state;
   const visibleData = this.filterPost(this.searchEmployees(data, term), filter);
   return (
-  <div className="app">
-    <AppInfo employees={employees} increased={increased}/>
+    <div className="app">
+      <AppInfo employees={employees} increased={increased}/>
 
-    <div className="search-panel">
-        <SearchPanel onUpadateSearch={this.onUpadateSearch}/>
-        <AppFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
+      <div className="search-panel">
+          <SearchPanel onUpadateSearch={this.onUpadateSearch}/>
+          <AppFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
+      </div>
+      
+      <EmployeesList 
+          data={visibleData}
+          onDelete={this.deleteItem}
+          onToggleProp={this.onToggleProp}/>
+      <EmployeesAddForm onAdd={this.addItem}/>
     </div>
-    
-    <EmployeesList 
-        data={visibleData}
-        onDelete={this.deleteItem}
-        onToggleProp={this.onToggleProp}/>
-    <EmployeesAddForm onAdd={this.addItem}/>
-  </div>
     );
   }
 }
